@@ -13,7 +13,7 @@ When you stop editing the dotfile (switch to a file which `yadm` doesn't trackin
 
 This uses [`jobstart`](https://neovim.io/doc/user/builtin.html#jobstart()), so it requires `neovim`. Am quite new to writing plugins, so would appreciate feedback and/or direction on compatibility with vim
 
-Should work with most vim plugin managers -- load the file in `autoload`
+Should work with most vim plugin managers -- load the file in `plugin`
 
 Using [`vim-plug`](https://github.com/junegunn/vim-plug)
 
