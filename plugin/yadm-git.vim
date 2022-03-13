@@ -67,7 +67,7 @@ function! s:yadm_callback(exit_status)
   endif
 endfunction
 
-augroup yadm
+augroup yadm_git
   autocmd!
   autocmd BufWinEnter * call s:yadm_check_file()
 augroup END
