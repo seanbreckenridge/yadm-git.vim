@@ -18,7 +18,7 @@ Should work with most vim plugin managers -- load the file in `plugin`
 Using [`vim-plug`](https://github.com/junegunn/vim-plug)
 
 ```
-Plug 'seanbreckenridge/vim-plug.vim'
+Plug 'seanbreckenridge/yadm-git.vim'
 ```
 
 To configure:
