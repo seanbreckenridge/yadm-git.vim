@@ -32,7 +32,7 @@ function! s:yadm_check_file()
   endif
   " use yadm ls-files to check if the current file is tracked by yadm
   " jobstart runs async
-  call jobstart(['yadm', 'ls-files', '--error-unmatch', expand('%:p')], {'on_exit':{j,d,e->s:yadm_callback(d)}})
+  call jobstart(['yadm', 'ls-files', '--error-unmatch', s:filepath], {'on_exit':{j,d,e->s:yadm_callback(d)}})
 endfunction
 
 function! s:yadm_patch_plugins()
