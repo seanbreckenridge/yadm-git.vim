@@ -4,7 +4,7 @@ Integrates [`yadm`](https://github.com/TheLocehiliosan/yadm) with [`vim-fugitive
 
 Whenever a buffer is loaded, uses `yadm ls-files` to detect if the current file is tracked by `yadm`. If so, this:
 
-- runs `FugitiveDetect` from [`vim-fugitive`](https://github.com/tpope/vim-fugitive), so dotfiles can be completely managed from inside vim using fugitive
+- runs `FugitiveDetect` from [`vim-fugitive`](https://github.com/tpope/vim-fugitive), so fugitive can act on the `yadm` git repo. All fugitive bindings stay the same
 - sets `g:gitgutter_git_executable` to `yadm`, which causes [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter) to show changed git hunks using `yadm`
 
 When you stop editing the dotfile (switch to a file which `yadm` doesn't tracking), it resets them back to the defaults (Fugitive does that automatically).
