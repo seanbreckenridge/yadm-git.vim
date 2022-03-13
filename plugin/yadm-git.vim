@@ -67,11 +67,6 @@ function! s:yadm_callback(exit_status)
   endif
 endfunction
 
-" for public usage
-function! YadmCheckFile()
-  s:yadm_check_file()
-endfunction
-
 augroup yadm
   autocmd!
   autocmd BufWinEnter * call s:yadm_check_file()
