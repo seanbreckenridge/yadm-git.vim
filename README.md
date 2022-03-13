@@ -1,6 +1,6 @@
 ## yadm-git.vim
 
-Integrates [`yadm`](https://github.com/TheLocehiliosan/yadm) with `vim-fugitive` and `vim-gitgutter`
+Integrates [`yadm`](https://github.com/TheLocehiliosan/yadm) with [`vim-fugitive`](https://github.com/tpope/vim-fugitive) and [`vim-gitgutter`](https://github.com/airblade/vim-gitgutter)
 
 Whenever a buffer is loaded, uses `yadm ls-files` to detect if the current file is tracked by `yadm`. If so, this:
 
