@@ -18,7 +18,7 @@ let g:yadm_git_fugitive_enabled = get(g:, "yadm_git_fugitive_enabled", 1)
 let g:yadm_git_gitgutter_enabled = get(g:, "yadm_git_gitgutter_enabled", 1)
 let g:yadm_git_default_git_path = get(g:, "yadm_git_default_git_path", "git")
 
-function! YadmCheckFile()
+function! s:yadm_check_file()
   if !g:yadm_git_enabled
     return
   endif
@@ -32,10 +32,10 @@ function! YadmCheckFile()
   endif
   " use yadm ls-files to check if the current file is tracked by yadm
   " jobstart runs async
-  call jobstart(['yadm', 'ls-files', '--error-unmatch', expand('%:p')], {'on_exit':{j,d,e->YadmCallback(d)}})
+  call jobstart(['yadm', 'ls-files', '--error-unmatch', expand('%:p')], {'on_exit':{j,d,e->s:yadm_callback(d)}})
 endfunction
 
-function! YadmPatchPlugins()
+function! s:yadm_patch_plugins()
   let s:yadm_git_verbose = get(g:, "yadm_git_verbose", 0)
   if g:yadm_git_fugitive_enabled
     call FugitiveDetect(g:yadm_git_repo_path)
@@ -48,7 +48,7 @@ function! YadmPatchPlugins()
   endif
 endfunction
 
-function! YadmResetPlugins()
+function! s:yadm_reset_plugins()
   let s:yadm_git_verbose = get(g:, "yadm_git_verbose", 0)
   if g:yadm_git_gitgutter_enabled && g:gitgutter_git_executable == 'yadm'
     let g:gitgutter_git_executable=g:yadm_git_default_git_path
@@ -59,15 +59,20 @@ function! YadmResetPlugins()
 endfunction
 
 " callback from anonymous function above, receives the exit status
-function! YadmCallback(exit_status)
+function! s:yadm_callback(exit_status)
   if a:exit_status == 0
-    call YadmPatchPlugins()
+    call s:yadm_patch_plugins()
   else
-    call YadmResetPlugins()
+    call s:yadm_reset_plugins()
   endif
+endfunction
+
+" for public usage
+function! YadmCheckFile()
+  s:yadm_check_file()
 endfunction
 
 augroup yadm
   autocmd!
-  autocmd BufWinEnter * call YadmCheckFile()
+  autocmd BufWinEnter * call s:yadm_check_file()
 augroup END
