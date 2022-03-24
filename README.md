@@ -9,6 +9,8 @@ Whenever a buffer is loaded, uses `yadm ls-files` to detect if the current file 
 
 When you stop editing the dotfile (switch to a file which `yadm` isn't tracking), it resets them back to the defaults (Fugitive does that automatically).
 
+Note: for gitgutter, you might prefer to switch to [gitsigns](https://github.com/lewis6991/gitsigns.nvim), which provides yadm support out of the box
+
 ## Install
 
 This uses [`jobstart`](https://neovim.io/doc/user/builtin.html#jobstart()), so it requires `neovim`. Am quite new to writing plugins, so would appreciate feedback and/or direction on compatibility with vim
