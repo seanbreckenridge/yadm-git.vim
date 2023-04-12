@@ -15,7 +15,7 @@ Note: for gitgutter, you might prefer to switch to [gitsigns](https://github.com
 
 This uses [`jobstart`](https://neovim.io/doc/user/builtin.html#jobstart()), so it requires `neovim`. Am quite new to writing plugins, so would appreciate feedback and/or direction on compatibility with vim
 
-Should work with most vim plugin managers -- load the file in `plugin`
+Should work with all vim plugin managers -- load the file in `plugin`
 
 Using [`vim-plug`](https://github.com/junegunn/vim-plug)
 
@@ -34,6 +34,20 @@ let g:yadm_git_gitgutter_enabled = 1
 
 let g:yadm_git_repo_path = "~/.local/share/yadm/repo.git"
 let g:yadm_git_default_git_path = "git"
+```
+
+Using [`packer`](https://github.com/wbthomason/packer.nvim):
+
+```lua
+require('packer').startup(function(use)
+    ...
+    use 'seanbreckenridge/yadm-git.vim'
+    ...
+end)
+
+-- configure
+vim.g.yadm_git_gitgutter_enabled = 1
+vim.g.yadm_git_verbose = 1
 ```
 
 ### Known Issues
