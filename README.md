@@ -23,7 +23,6 @@ For example, using [`lazy`](https://github.com/folke/lazy.nvim):
 {
     'seanbreckenridge/yadm-git.vim',
     config = function()
-        vim.g.yadm_git_verbose = 0
         vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
     end
 }
@@ -31,14 +30,18 @@ For example, using [`lazy`](https://github.com/folke/lazy.nvim):
 
 Configuration:
 
-```vimscript
-let g:yadm_git_enabled = 1
-let g:yadm_git_verbose = 0
+```vim
+let g:yadm_git_enabled = 1 " setting this to 0 disables the plugin
+let g:yadm_git_verbose = 0 " prints when it yadm ls-files detects a file
 
 let g:yadm_git_fugitive_enabled = 1
 let g:yadm_git_gitgutter_enabled = 1
 
+" the location of your yadm repo (this is the default for yadm)
+" used with FugitiveDetect when it detects a dotfile
 let g:yadm_git_repo_path = "~/.local/share/yadm/repo.git"
+" to 'reset' gitgutter git path after switching buffers
+" to a non-dotfile. you probably dont need to set this
 let g:yadm_git_default_git_path = "git"
 ```
 
