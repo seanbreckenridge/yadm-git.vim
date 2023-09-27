@@ -11,15 +11,8 @@ let g:loaded_yadm_git = 1
 
 let s:has_yadm = executable('yadm')
 
-let g:yadm_git_repo_path = get(g:, "yadm_git_repo_path", "~/.local/share/yadm/repo.git")
-let g:yadm_git_enabled = get(g:, "yadm_git_enabled", 1)
-
-let g:yadm_git_fugitive_enabled = get(g:, "yadm_git_fugitive_enabled", 1)
-let g:yadm_git_gitgutter_enabled = get(g:, "yadm_git_gitgutter_enabled", 1)
-let g:yadm_git_default_git_path = get(g:, "yadm_git_default_git_path", "git")
-
 function! s:yadm_check_file()
-  if !g:yadm_git_enabled
+  if !get(g:, "yadm_git_enabled", 1)
     return
   endif
   if !s:has_yadm
@@ -37,10 +30,10 @@ endfunction
 
 function! s:yadm_patch_plugins()
   let s:yadm_git_verbose = get(g:, "yadm_git_verbose", 0)
-  if g:yadm_git_fugitive_enabled
-    call FugitiveDetect(g:yadm_git_repo_path)
+  if get(g:, "yadm_git_fugitive_enabled", 1)
+    call FugitiveDetect(get(g:, "yadm_git_repo_path", "~/.local/share/yadm/repo.git"))
   endif
-  if g:yadm_git_gitgutter_enabled
+  if get(g:, "yadm_git_gitgutter_enabled", 1)
     let g:gitgutter_git_executable='yadm'
   endif
   if s:yadm_git_verbose
@@ -51,7 +44,7 @@ endfunction
 function! s:yadm_reset_plugins()
   let s:yadm_git_verbose = get(g:, "yadm_git_verbose", 0)
   if g:yadm_git_gitgutter_enabled && g:gitgutter_git_executable == 'yadm'
-    let g:gitgutter_git_executable=g:yadm_git_default_git_path
+    let g:gitgutter_git_executable=get(g:, "yadm_git_default_git_path", "git")
     if s:yadm_git_verbose
       echo 'yadm: reset gitgutter executable path'
     endif
