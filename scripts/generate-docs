@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+exec panvimdoc.sh --project-name 'yadm-git.vim' --input-file ./README.md --toc true --demojify true --treesitter true
