@@ -9,21 +9,27 @@ Whenever a buffer is loaded, uses `yadm ls-files` to detect if the current file 
 
 When you stop editing the dotfile (switch to a file which `yadm` isn't tracking), it resets them back to the defaults (Fugitive does that automatically).
 
-Note: for gitgutter, you might prefer to switch to [gitsigns](https://github.com/lewis6991/gitsigns.nvim), which provides yadm support out of the box
+For gitgutter, you might prefer to switch to [gitsigns](https://github.com/lewis6991/gitsigns.nvim), which provides yadm support out of the box
 
 ## Install
 
-This uses [`jobstart`](https://neovim.io/doc/user/builtin.html#jobstart()), so it requires `neovim`. Am quite new to writing plugins, so would appreciate feedback and/or direction on compatibility with vim
+This uses [`jobstart`](<https://neovim.io/doc/user/builtin.html#jobstart()>), so it requires `neovim`. Am quite new to writing plugins, so would appreciate feedback and/or contributions for compatibility with vim
 
 Should work with all vim plugin managers -- load the file in `plugin`
 
-Using [`vim-plug`](https://github.com/junegunn/vim-plug)
+For example, using [`lazy`](https://github.com/folke/lazy.nvim):
 
-```
-Plug 'seanbreckenridge/yadm-git.vim'
+```lua
+{
+    'seanbreckenridge/yadm-git.vim',
+    config = function()
+        vim.g.yadm_git_verbose = 0
+        vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
+    end
+}
 ```
 
-To configure:
+Configuration:
 
 ```vimscript
 let g:yadm_git_enabled = 1
@@ -34,20 +40,6 @@ let g:yadm_git_gitgutter_enabled = 1
 
 let g:yadm_git_repo_path = "~/.local/share/yadm/repo.git"
 let g:yadm_git_default_git_path = "git"
-```
-
-Using [`packer`](https://github.com/wbthomason/packer.nvim):
-
-```lua
-require('packer').startup(function(use)
-    ...
-    use 'seanbreckenridge/yadm-git.vim'
-    ...
-end)
-
--- configure
-vim.g.yadm_git_gitgutter_enabled = 1
-vim.g.yadm_git_verbose = 1
 ```
 
 ### Known Issues
