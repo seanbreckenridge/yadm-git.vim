@@ -10,6 +10,7 @@ endif
 let g:loaded_yadm_git = 1
 
 let s:has_yadm = executable('yadm')
+let g:gitgutter_git_executable=get(g:, "yadm_git_default_git_path", "git")
 
 function! s:yadm_check_file()
   if !get(g:, "yadm_git_enabled", 1)
@@ -43,7 +44,7 @@ endfunction
 
 function! s:yadm_reset_plugins()
   let s:yadm_git_verbose = get(g:, "yadm_git_verbose", 0)
-  if g:yadm_git_gitgutter_enabled && g:gitgutter_git_executable == 'yadm'
+  if get(g:, "yadm_git_gitgutter_enabled", 1) && g:gitgutter_git_executable == 'yadm'
     let g:gitgutter_git_executable=get(g:, "yadm_git_default_git_path", "git")
     if s:yadm_git_verbose
       echo 'yadm: reset gitgutter executable path'
