@@ -1,4 +1,4 @@
-*yadm-git.vim.txt*              For               Last change: 2023 October 31
+*yadm-git.vim.txt*                For                 Last change: 2024 May 25
 
 ==============================================================================
 Table of Contents                             *yadm-git.vim-table-of-contents*
@@ -41,6 +41,7 @@ For example, using `lazy` <https://github.com/folke/lazy.nvim>
 >lua
     {
         'seanbreckenridge/yadm-git.vim',
+        event = "BufWinEnter",
         config = function()
             vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
         end

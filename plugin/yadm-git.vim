@@ -9,7 +9,13 @@ if exists('g:loaded_yadm_git')
 endif
 let g:loaded_yadm_git = 1
 
-let s:has_yadm = executable('yadm')
+" if g:has_yadm is already set, then use that
+if exists('g:has_yadm')
+	let s:has_yadm = g:has_yadm
+else
+	let s:has_yadm = executable('yadm')
+endif
+
 let g:gitgutter_git_executable=get(g:, "yadm_git_default_git_path", "git")
 
 function! s:yadm_check_file()

@@ -22,6 +22,7 @@ For example, using [`lazy`](https://github.com/folke/lazy.nvim):
 ```lua
 {
     'seanbreckenridge/yadm-git.vim',
+    event = "BufWinEnter",
     config = function()
         vim.g.yadm_git_gitgutter_enabled = 0 -- I use gitsigns instead
     end
