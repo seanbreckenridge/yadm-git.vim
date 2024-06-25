@@ -1,4 +1,4 @@
-*yadm-git.vim.txt*                For                Last change: 2024 June 06
+*yadm-git.vim.txt*                For                Last change: 2024 June 25
 
 ==============================================================================
 Table of Contents                             *yadm-git.vim-table-of-contents*
@@ -22,6 +22,9 @@ is tracked by `yadm`. If it is, this:
 When you stop editing the dotfile (switch to a file which `yadm` isn’t
 tracking), it resets them back to the defaults (Fugitive does that
 automatically).
+
+For gitsigns <https://github.com/lewis6991/gitsigns.nvim> yadm support, see
+gitsigns-yadm.nvim <https://github.com/seanbreckenridge/gitsigns-yadm.nvim>
 
 
 INSTALL                                                 *yadm-git.vim-install*
